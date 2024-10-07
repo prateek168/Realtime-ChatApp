@@ -9,11 +9,11 @@ import jwt from "jsonwebtoken"
       return res.status(400).json({message :"All fields are required"})
     }
     if( password !== confirmPassword ){
-      return res.status(400).jso({message:"Password do not match ! "})
+      return res.status(400).json({message:"Password do not match ! "})
     }
     const user = await User.findOne({username});
     if(user){
-      return res.status(400).json({message:"Username already exists , try different !"})
+      return res.status(400).json({message:"Username already exists , try different !" , success:false})
     }
     const hashedPassword = await bcrypt.hash(password , 10)
 
