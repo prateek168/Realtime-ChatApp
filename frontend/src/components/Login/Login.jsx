@@ -3,11 +3,14 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import loginValidationSchema from "../../validators/loginValidation"; // Assuming you have validation in place
 import axios from 'axios'
 import toast from 'react-hot-toast'
+import { useDispatch } from "react-redux";
+import { setAuthUser } from "../../redux/userSlice";
 const Login = () => {
   const initialValues = {
     username: "",
     password: "",
   };
+  const dispatch = useDispatch();
   const navigate = new useNavigate()
 
   const handleSubmit = async (values) => {
@@ -22,6 +25,7 @@ const Login = () => {
       navigate('/')
       toast.success(res.data.message)
     }
+    dispatch(setAuthUser(res.data))
     }
     catch(error){
       if(axios.isAxiosError(error)){
