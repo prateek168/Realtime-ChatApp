@@ -18,8 +18,8 @@ import jwt from "jsonwebtoken"
     const hashedPassword = await bcrypt.hash(password , 10)
 
     //ProfilePhoto
-    const  maleProfilePhoto = `https://avatar.iran.liara.run/public/boy/${username}`
-    const  femaleProfilePhoto = `https://avatar.iran.liara.run/public/girl/${username}`
+    const  maleProfilePhoto = `https://avatar.iran.liara.run/public/boy?username=${username}`
+    const  femaleProfilePhoto = `https://avatar.iran.liara.run/public/girl?username=${username}`
     await User.create({
       fullName , 
       username ,

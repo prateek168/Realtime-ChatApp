@@ -120,3 +120,46 @@ db.sqlite3
 # Miscellaneous
 *.DS_Store
 *.log
+
+[
+  {
+    "_id": "6703db2a66b87317069048c9",
+    "fullName": "Prateek",
+    "username": "prateek1681998",
+    "profilePhoto": "https://avatar.iran.liara.run/public/boy/prateek1681998",
+    "gender": "male",
+    "createdAt": "2024-10-07T12:59:22.068Z",
+    "updatedAt": "2024-10-07T12:59:22.068Z",
+    "__v": 0
+  },
+  {
+    "_id": "670990610ccd8c4119f37e7a",
+    "fullName": "Tejas",
+    "username": "tejas69",
+    "profilePhoto": "https://avatar.iran.liara.run/public/boy/tejas69",
+    "gender": "male",
+    "createdAt": "2024-10-11T20:53:53.880Z",
+    "updatedAt": "2024-10-11T20:53:53.880Z",
+    "__v": 0
+  },
+  {
+    "_id": "670991240ccd8c4119f37e93",
+    "fullName": "Vineet",
+    "username": "vineet69",
+    "profilePhoto": "https://avatar.iran.liara.run/public/boy/vineet69",
+    "gender": "male",
+    "createdAt": "2024-10-11T20:57:08.729Z",
+    "updatedAt": "2024-10-11T20:57:08.729Z",
+    "__v": 0
+  },
+  {
+    "_id": "671095afcd41d8079f7c80b6",
+    "fullName": "Bagish",
+    "username": "bagish69",
+    "profilePhoto": "https://avatar.iran.liara.run/public/boy/bagish69",
+    "gender": "male",
+    "createdAt": "2024-10-17T04:42:23.707Z",
+    "updatedAt": "2024-10-17T04:42:23.707Z",
+    "__v": 0
+  }
+]

@@ -1,10 +1,27 @@
 import React from "react";
 import { BiSearchAlt2 } from "react-icons/bi";
 import OtherUsers from "../OtherUsers/OtherUsers";
-
+import toast from 'react-hot-toast'
+import axios from 'axios'
+import { useNavigate } from "react-router-dom";
 const Sidebar = () => {
+  const navigate = useNavigate();
+  const logoutHandler = async()=>{
+   try{
+    const res = await axios.get(`http://localhost:8080/api/v1/user/logout`);
+    navigate('/login')
+    toast.success(res.data.message)
+   }
+   catch(error){
+    if(axios.isAxiosError(error)){
+      const message = error.data.message || 'An error Occured. try again!'
+      toast.error(message);
+    }
+    console.log(error)
+   }
+  }
   return (
-    <div className="w-full p-2 rounded-lg shadow-md h-full bg-gray-200 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100 border-rose-950 flex flex-col">
+    <div className="bg-zinc-200 w-full p-2 rounded-lg shadow-md h-full bg-gray-200 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100 border-rose-950 flex flex-col">
       {/* Search Bar */}
       <form action="" className="flex items-center gap-2 mb-4">
         <input
@@ -24,11 +41,13 @@ const Sidebar = () => {
       <div className="divider mb-4"></div>
 
       {/* Other Users with scroll but no scrollbar */}
-      <div className="flex-1 overflow-y-auto scrollbar-hide">
+      <div className="flex-1 overflow-y-auto  ">
         <OtherUsers />
       </div>
       <div className="mt-2  ">
-        <button className=" btn bg-red-700 border-none text-white btn-sm">Logout</button>
+        <button onClick={logoutHandler} className=" btn bg-red-700 border-none text-white btn-sm">
+          Logout
+        </button>
       </div>
     </div>
   );

@@ -23,10 +23,10 @@ const Signup = () => {
         },
         withCredentials:true
       })
-       if(res.ok){
-        navigate('/login')
-        toast.success(res.data.message)
-      }}
+       if (res.status == 200 || res.status == 201) {
+         navigate("/login");
+         toast.success(res.data.message);
+       }}
     catch(error){
      if(axios.isAxiosError(error)){
       const message = error.response?.data?.message || " An Error Occurred. Please try again."
