@@ -1,10 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import SendInput from '../SendInput/SendInput';
 import Messages from '../Messages/Messages';
-import { useSelector } from 'react-redux';
+import { useSelector , useDispatch } from 'react-redux';
+import { setselectedUser } from '../../redux/userSlice';
 
 const MessageContainer = () => {
   const {selectedUser } = useSelector(store=> store.user)
+    const dispatch = useDispatch();
+  useEffect(()=>{
+    return ()=> dispatch(setselectedUser(null));
+  }, [])
   if(!selectedUser)
     return (
      <></>
@@ -15,7 +20,7 @@ const MessageContainer = () => {
         <div>
           <div className="  justify-center " >
             <div className=" flex gap-2 text-white items-center bg-zinc-800  rounded-3xl cursor-pointer ">
-              <div className="avatar online">
+              <div className=" ">
                 <div className="w-12 rounded-full">
                   <img
                     src={selectedUser?.profilePhoto}

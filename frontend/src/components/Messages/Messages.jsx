@@ -8,14 +8,14 @@ const Messages = () => {
   useGetMessages();
   const {messages} = useSelector(store => store.message)
   if( !messages) return (
-     <div className="px-4 flex-1 overflow-hidden">
+     <div className="px-4 flex-1 overflow-auto">
      
      
     </div>
   );
  
   return (
-    <div className="px-4 flex-1 overflow-hidden">
+    <div className="px-4 flex-1 overflow-auto">
       {
         messages?.map(message =>{
           return (

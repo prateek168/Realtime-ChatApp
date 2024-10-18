@@ -4,17 +4,21 @@ import OtherUsers from "../OtherUsers/OtherUsers";
 import toast from 'react-hot-toast'
 import axios from 'axios'
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { setAuthUser } from "../../redux/userSlice";
 const Sidebar = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const logoutHandler = async()=>{
    try{
     const res = await axios.get(`http://localhost:8080/api/v1/user/logout`);
     navigate('/login')
     toast.success(res.data.message)
+    dispatch(setAuthUser(null))
    }
    catch(error){
     if(axios.isAxiosError(error)){
-      const message = error.data.message || 'An error Occured. try again!'
+      const message = error?.data?.message || 'An error Occured. try again!'
       toast.error(message);
     }
     console.log(error)

@@ -1,38 +1,44 @@
 import React from "react";
-import useGetOtherUsers from "../../hooks/useGetOtherUsers";
-import { setselectedUser } from "../../redux/userSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { setselectedUser } from "../../redux/userSlice";
 
 const OtherUser = (props) => {
   const dispatch = useDispatch();
-  const {selectedUser} = useSelector(store=>store.user)
+  const { selectedUser, onlineUsers } = useSelector((store) => store.user);
   const user = props.user;
 
+  // Check if the user is online
+  const isOnline = onlineUsers?.some((id) => id === user._id); // Ensure comparison is correct
+
   const selectedUserHandler = (user) => {
-    dispatch(setselectedUser(user)); 
+    dispatch(setselectedUser(user));
   };
+
   return (
     <>
       <div
         onClick={() => selectedUserHandler(user)}
-        className={` ${
-          selectedUser?._id == user?._id ? "bg-zinc-600 text-white " : ""
-        } m-2  flex gap-2 items-center      rounded-3xl cursor-pointer overflow-hidden text-black`}
+        className={`${
+          selectedUser?._id === user?._id ? "bg-zinc-600 text-white" : ""
+        } m-2 flex gap-2 items-center rounded-3xl cursor-pointer overflow-hidden text-black`}
       >
-        <div className="avatar online">
-          <div className="w-12 rounded-full">
-            <img
-              src={`https://avatar.iran.liara.run/public/boy/${user.profilePhoto}`}
-              alt=""
-            />
-          </div>
+        {/* Online status indicator with avatar */}
+        <div className="relative w-12 h-12 rounded-full overflow-hidden">
+          <img
+            className="w-full h-full object-cover"
+            src={`https://avatar.iran.liara.run/public/boy/${user?.profilePhoto}`}
+            alt={`${user?.fullName}'s profile`}
+          />
+          {isOnline && (
+            <span className="  online absolute top-1 right-1 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></span>
+          )}
         </div>
-        <div className="flex flex-col flex-1">
-          <div className="flex justify-between gap-2"></div>
-          <p>{user?.fullName}</p>
+
+        {/* User's name */}
+        <div className="flex flex-col flex-1 ml-2">
+          <p className="font-medium">{user?.fullName}</p>
         </div>
       </div>
-      {/* <div className=" divider my-0 py-0 h-1"></div> */}
     </>
   );
 };

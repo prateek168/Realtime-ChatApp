@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { IoSend } from "react-icons/io5";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setMessages } from "../../redux/messageSlice";
 const SendInput = () => {
-  const [message, setMessage] = useState("");
+const [message, setMessage] = useState("");
   const dispatch = useDispatch();
   const {selectedUser} = useSelector(store => store.user);
   const {messages} = useSelector(store => store.message);
