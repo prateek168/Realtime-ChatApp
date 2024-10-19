@@ -8,7 +8,6 @@ const MessageContainer = () => {
   const {selectedUser } = useSelector(store=> store.user)
     const dispatch = useDispatch();
   useEffect(()=>{
-    return ()=> dispatch(setselectedUser(null));
   }, [])
   if(!selectedUser)
     return (

@@ -3,7 +3,10 @@ import { IoSend } from "react-icons/io5";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setMessages } from "../../redux/messageSlice";
+import useGetMessages from "../../hooks/useGetMessages";
+import useGetRealTimeMessage from "../../hooks/useGetRealTimeMessage";
 const SendInput = () => {
+  
 const [message, setMessage] = useState("");
   const dispatch = useDispatch();
   const {selectedUser} = useSelector(store => store.user);
@@ -24,6 +27,7 @@ const [message, setMessage] = useState("");
       ); 
       console.log(res)
       dispatch(setMessages([...messages ,res?.data?.newMessage]))
+      
     } catch (error) {
       console.log(error);
     }

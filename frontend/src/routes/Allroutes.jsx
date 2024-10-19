@@ -1,12 +1,17 @@
 import React from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
 import HomePage from "../components/HomePage/HomePage.jsx";
 import Signup from "../components/Signup/Signup.jsx";
 import Login from "../components/Login/Login.jsx";
+import { useSelector } from "react-redux";
+import useGetAuthUser from "../hooks/useGetAuthUser.jsx";
+const ProtectedRoute = ({element})=>{
+  return useGetAuthUser() ? element : <Navigate to='/login'/>
+}
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomePage />,
+    element: <ProtectedRoute element={<HomePage/>}/> ,
   },
   {
     path: "/register",
