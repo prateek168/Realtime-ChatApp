@@ -1,4 +1,4 @@
-# Real-Time Chat App
+# Textify : Real-Time Chat App
 
 Welcome to the Real-Time Chat App built using the MERN stack (MongoDB, Express.js, React.js, Node.js) and Socket.IO. This application allows users to communicate in real time, making it ideal for messaging and chat functionalities.
 
